@@ -1,13 +1,9 @@
 import React from 'react';
 
 // pages
-import Body from './pages/Body';
-
-// components
-// import Header from './components/Header';
-import Footer from './components/Footer';
-import Header from './components/Header';
-
+import Header from './parts/Header';
+import Main from './parts/Main';
+import Footer from './parts/Footer';
 
 
 // CSS
@@ -20,7 +16,7 @@ export default function App ()  {
     return (
       <> 
         <Header />
-        <Body />
+        <Main />
         <Footer />
 
       </>

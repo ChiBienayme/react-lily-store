@@ -7,7 +7,7 @@ export default function Footer () {
   
     return (
       <div>
-          <code className='text-dark text-align-center'>
+          <code className='text-dark'>
             Created by Ha Chi HOANG using React -  February 25, 2022 
             {/* <a href="https://github.com/ChiBienayme/react-store" target="none">
               Ha Chi HOANG
