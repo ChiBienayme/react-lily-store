@@ -3,7 +3,7 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
-export default function Decrement () {
+export default function Decrement ({}) {
   
     return (
       <div>

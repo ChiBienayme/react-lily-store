@@ -10,8 +10,8 @@ export default function Header() {
   return (
     <div className="navbar navbar-expand-sm navbar-dark bg-primary mb-4 col-12">
       <div className="row">
-          <div className="col">
-            <img className="logo-store" src="./asset/image/download.png" alt="Logo Lily Store" />
+          <div className="col m-3">
+            {/* <img className="logo-store" src="./asset/image/download.png" alt="Logo Lily Store" /> */}
             <h3 className="text-white">Welcome to Lily store</h3>
           </div>
         

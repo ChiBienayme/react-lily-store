@@ -1,31 +1,38 @@
-import React, { useContext } from 'react';
-import { addItemContext } from '../parts/Main';
+import React  from 'react';
+
 
 // CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/Card.css";
 
-import ItemsCard from './ItemsCard';
+// import Buttons
+import Increment from "./Buttons/Increment";
+import Decrement from "./Buttons/Decrement";
+import Delete from "./Buttons/Delete";
 
-export default function UpdatedList({ name, quantity,price, onChange, onAdd}) {
-    const updatedList = useContext(addItemContext);
+export default function UpdatedList(props) {
+   
 
     return (
     <>
-        {updatedList.stockedItem.map((item) => {
+      <div className="products-card col-12">
+            <ul className="nav nav-pills nav-justified">
+              <li className="nav-item" id="title-1">
+                <h3>
+                  <span className="badge badge-pill badge-primary">{props.name}</span>
+                </h3>
+              </li>
 
-            return (
-                <ItemsCard
-                    key = {item[0].id}
-                    name = {item[0].name}
-                    quantity = {item[0].quantity}
-                    price = {item[0].price}
-                    onChange={item[0].onChange}
-                    onClick={item[0].onAdd}
-                />
-                    
-            )
-        })}
+              <li className="nav-item" id="quantity-1">
+                <div style={{ color: "red" }}> {props.quantity} </div>
+              </li>
+              <li className="nav-item" id="price-1">  {props.price} MAD </li>
+              <li className="nav-item"> <Increment /> </li>
+              <li className="nav-item"> <Decrement /> </li>
+              <li className="nav-item"> <Delete /> </li>
+            </ul>
+            <hr />
+          </div>
     </>
         
       
