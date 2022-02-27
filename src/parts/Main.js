@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home() {
   const [items, setItems] = useState([
-    { itemName: "Milk", quantity: 1, price: 3.2, isSelected: false },
+    { itemName: "Milk", quantity: 1, price: 3.2, },
   ]);
 
   // New List
@@ -22,44 +22,26 @@ export default function Home() {
       itemName: inputName,
       quantity: inputQuantity,
       price: inputPrice,
-      isSelected: false,
     };
-
-
     const newItems = [...items, newItem];
-
     setItems(newItems);
     setInputName("");
     setInputQuantity("");
     setInputPrice("");
-
-    };
+  };
 
   // Increment button
   const handleQuantityIncrease = (index) => {
     const newItems = [...items];
-
     newItems[index].quantity++;
-
     setItems(newItems);
 
   };
 
   // Decrement button
   const handleQuantityDecrease = (index) => {
-    const newItems = [...items];
-    
+    const newItems = [...items];  
     newItems[index].quantity--;
-
-    setItems(newItems);
-
-  };
-
-  const toggleComplete = (index) => {
-    const newItems = [...items];
-
-    newItems[index].isSelected = !newItems[index].isSelected;
-
     setItems(newItems);
   };
 
@@ -70,17 +52,17 @@ export default function Home() {
     setItems(newItems);
   }
 
-
   return (
     <>
       {/* Add new item */}
       <div className="container">
         <div className="row">
           <div className="item-list col-12">
-            {items.map((item, index) => (
+            {items.map((item, index) => { 
+              return (
               <div
                 className="nav nav-pills nav-justified row"
-                onClick={() => toggleComplete(index)}
+               
               >
                 <UpdatedList 
                   key={item.id}
@@ -99,24 +81,28 @@ export default function Home() {
                   </button>
                 </li>
 
-                <li className="nav-item">
-                  <button
-                    className="btn btn-secondary btn-sm"
-                    id="decrement-1"
-                    onClick={() => handleQuantityDecrease(Math.max(index, 0))}
-                  >
-                    DECREMENT
-                  </button>
-                </li>
+                
+                  <li className="nav-item">
+                    <button
+                        className="btn btn-secondary btn-sm"
+                        id="decrement-1"
+                        onClick={() => handleQuantityDecrease(Math.max(index, 0))}
+                      >
+                        DECREMENT
+                      </button>
+                      
+                    
+                  </li>
+                
+                  <li className="nav-item">
+                    <button className="btn btn-danger btn-sm" id="remove-1"
+                    onClick={() => handleRemove(index)}>
+                      DELETE
+                    </button>
+                  </li> 
 
-                <li className="nav-item">
-                  <button className="btn btn-danger btn-sm" id="remove-1"
-                  onClick={() => handleRemove(index,1)}>
-                    DELETE
-                  </button>
-                </li> 
               </div>
-            ))}
+            )})}
           </div>
         </div>
       </div>
@@ -162,11 +148,6 @@ export default function Home() {
         >
           Create
         </button>
-
-        <button className="btn btn-danger btn-sm" id="remove-1"
-                  onClick={() => handleRemove()}>
-                    DELETE
-                  </button>
       </div>
 
     </>
