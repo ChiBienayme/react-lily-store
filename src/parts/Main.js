@@ -1,115 +1,175 @@
-import React  from 'react';
-import { useForm,  useFieldArray } from "react-hook-form";
+import React, { useState } from "react";
 
 // components
-import  InitialCard   from "../components/InitialCard";
-import UpdatedList from '../components/UpdatedList';
+import UpdatedList from "../components/UpdatedList";
 
 // CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 export default function Home() {
-  
-  const {
-    register,
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-       test: [{ name: "Milk", quantity: 1, price: 3.2 }]
-     }
-  });
-  
-  const {
-    fields,
-    insert
-  } = useFieldArray({
-    control,
-    name: "bread",
-    quantity: 1,
-    price: 1,
-  });
+  const [items, setItems] = useState([
+    { itemName: "Milk", quantity: 1, price: 3.2, isSelected: false },
+  ]);
 
-  const onSubmit = (data) => console.log("data", data);
-
-    return  (
-      <>
- 
-          {fields.map((item) => (
-            <ul className='nav nav-pills nav-justified'>
-              <UpdatedList
-                key={item.id}
-                name = {item.name}
-                quantity = {item.quantity}
-                price = {item.price}
-                
-              />
-            </ul>
-
-            ))} 
-            
-            
-          {/* FORM */}
-          <form className='input-group mb-3 d-flex' onSubmit={handleSubmit(onSubmit)} >
-            
-
-            <InitialCard />
-
-            <div className='input-group-prepend'>
-              <span className='input-group-text'> Articles </span>
-            </div>
-
-            <input
-              name="name" type="text"
-              className="form-control"
-              placeholder="Name"
-              {...register("name", {
-                required: true,
-                
-              })}                  
-            />
-            {errors.name && <span>Please enter a number of product</span>}
+  // New List
+  const [inputName, setInputName] = useState("");
+  const [inputQuantity, setInputQuantity] = useState("");
+  const [inputPrice, setInputPrice] = useState("");
 
 
-            <input
-              name="quality" type="number"
-              className="form-control"
-              placeholder="Quantity"
-              {...register("quantity", {
-                required: true,
-                value:/[0-9]/,
-              })}
-            />
-            {errors.quantity && <span>Please enter a number of product</span>}
+  const handleAddButtonClick = () => {
+    const newItem = {
+      itemName: inputName,
+      quantity: inputQuantity,
+      price: inputPrice,
+      isSelected: false,
+    };
 
-            <input
-              name="price" type="number"
-              className="form-control"
-              placeholder="Price"
-              {...register("price", {
-                required: true,
-                value:/[0-9]/,
-              })}
-            />
-            {errors.price && <span>Please enter the price of product</span>}
 
-            <button
-              type="submit"
-              className='btn btn-primary'
-              onClick={() =>
-                insert(parseInt(2, 10), {
-                })
-              }
-            >
-              Create
-            </button>
-          </form>
+    const newItems = [...items, newItem];
 
+    setItems(newItems);
+    setInputName("");
+    setInputQuantity("");
+    setInputPrice("");
+
+    };
+
+  // Increment button
+  const handleQuantityIncrease = (index) => {
+    const newItems = [...items];
+
+    newItems[index].quantity++;
+
+    setItems(newItems);
+
+  };
+
+  // Decrement button
+  const handleQuantityDecrease = (index) => {
+    const newItems = [...items];
+    
+    newItems[index].quantity--;
+
+    setItems(newItems);
+
+  };
+
+  const toggleComplete = (index) => {
+    const newItems = [...items];
+
+    newItems[index].isSelected = !newItems[index].isSelected;
+
+    setItems(newItems);
+  };
+
+  // Delete button
+  const handleRemove = (index) => {
+    const newItems = [...items];
+    newItems.splice(newItems.indexOf(index), 1);
+    setItems(newItems);
+
+  }
+
+
+  return (
+    <>
+      {/* Add new item */}
+      <div className="container">
+        <div className="row">
+          <div className="item-list col-12">
+            {items.map((item, index) => (
+              <div
+                className="nav nav-pills nav-justified row"
+                onClick={() => toggleComplete(index)}
+              >
+                <UpdatedList 
+                  key={item.id}
+                  name={item.itemName}
+                  quantity={item.quantity}
+                  price={item.price}
+                />
+
+                <li className="nav-item">
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    id="increment-1"
+                    onClick={() => handleQuantityIncrease(index)}
+                  >
+                    INCREMENT
+                  </button>
+                </li>
+
+                <li className="nav-item">
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    id="decrement-1"
+                    onClick={() => handleQuantityDecrease(Math.max(index, 0))}
+                  >
+                    DECREMENT
+                  </button>
+                </li>
+
+                <li className="nav-item">
+                  <button className="btn btn-danger btn-sm" id="remove-1"
+                  onClick={() => handleRemove(index)}>
+                    DELETE
+                  </button>
+                </li> 
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
       
 
-      </>
-    ) 
-  
+      {/* FORM */}
+      <div className="input-group mb-3 d-flex">
+        <div className="input-group-prepend">
+          <span className="input-group-text"> Articles </span>
+        </div>
+
+        <input
+          name="name"
+          type="text"
+          className="form-control"
+          placeholder="Name"
+          value={inputName}
+          onChange={(event) => setInputName(event.target.value)}
+        />
+
+        <input
+          name="quality"
+          type="number"
+          className="form-control"
+          placeholder="Quantity"
+          value={inputQuantity}
+          onChange={(event) => setInputQuantity(event.target.value)}
+        />
+
+        <input
+          name="price"
+          type="number"
+          className="form-control"
+          placeholder="Price"
+          value={inputPrice}
+          onChange={(event) => setInputPrice(event.target.value)}
+        />
+
+        <button
+          type="submit"
+          className="btn btn-primary"
+          onClick={() => handleAddButtonClick()}
+        >
+          Create
+        </button>
+
+        <button className="btn btn-danger btn-sm" id="remove-1"
+                  onClick={() => handleRemove()}>
+                    DELETE
+                  </button>
+      </div>
+
+    </>
+  );
 }
