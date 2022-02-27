@@ -13,17 +13,17 @@ export default function Header() {
 
       <div className="nav navbar-expand-sm navbar-dark bg-primary mb-4 col-12">
         
-          <div className="row">
-              <div className="m-3">
-                <img className="logo-store" src={Icon} alt="Logo Lily Store" /> 
-                <h3 className="text-white">Welcome to Lily store</h3>
+          <div className="row ">
+              <div className="d-flex m-3">
+                <img className="logo-store m-2" src={Icon} alt="Logo Lily Store" /> 
+                <h2 className="text-white m-3">Welcome to Lily's store</h2>
               </div>
             
           </div>
      
         
 
-        <div className="col number-of-articles m-3">
+        <div className="col number-of-articles m-4">
           <h6 className=""> Number of articles </h6>
         </div>
       </div>

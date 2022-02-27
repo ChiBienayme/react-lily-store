@@ -66,9 +66,8 @@ export default function Home() {
   // Delete button
   const handleRemove = (index) => {
     const newItems = [...items];
-    newItems.splice(newItems.indexOf(index), 1);
+    newItems.splice(index, 1);
     setItems(newItems);
-
   }
 
 
@@ -112,7 +111,7 @@ export default function Home() {
 
                 <li className="nav-item">
                   <button className="btn btn-danger btn-sm" id="remove-1"
-                  onClick={() => handleRemove(index)}>
+                  onClick={() => handleRemove(index,1)}>
                     DELETE
                   </button>
                 </li> 
