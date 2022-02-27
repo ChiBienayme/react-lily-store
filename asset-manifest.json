@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-lily-store/static/css/main.b49cd67b.css",
+    "main.js": "/react-lily-store/static/js/main.e97e87a8.js",
+    "static/js/787.1c564708.chunk.js": "/react-lily-store/static/js/787.1c564708.chunk.js",
+    "index.html": "/react-lily-store/index.html",
+    "main.b49cd67b.css.map": "/react-lily-store/static/css/main.b49cd67b.css.map",
+    "main.e97e87a8.js.map": "/react-lily-store/static/js/main.e97e87a8.js.map",
+    "787.1c564708.chunk.js.map": "/react-lily-store/static/js/787.1c564708.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b49cd67b.css",
+    "static/js/main.e97e87a8.js"
+  ]
+}
