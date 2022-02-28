@@ -8,7 +8,7 @@ export default function UpdatedList(props) {
   return (
     
     <>
-        <ul className="products-card nav nav-pills nav-justified col-6">
+        <ul className="products-card nav nav-pills nav-justified col-sm-12 col-lg-6">
           <li className="nav-item" id="title-1">
             <h3>
               <span className="badge badge-pill badge-primary">

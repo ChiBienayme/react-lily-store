@@ -11,7 +11,7 @@ export default function Header() {
   return (
 
 
-      <div className="nav navbar-expand-sm navbar-dark bg-primary mb-4 col-12">
+      <div className="nav navbar-expand-sm navbar-dark bg-primary mb-4 col-lg-12">
         
           <div className="row ">
               <div className="d-flex m-3">

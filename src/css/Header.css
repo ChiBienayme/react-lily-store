@@ -21,3 +21,12 @@
     display: inline-block;
     margin-left: 20px ;
 }
+
+@media (max-width: 500px) {
+    .number-of-articles {
+        text-align: center;
+        color: white;
+        display: inline-block;
+        margin-left: 20px ;
+    }
+}

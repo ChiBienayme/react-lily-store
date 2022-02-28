@@ -23,3 +23,9 @@
     padding-left: 0.6em;
     border-radius: 10rem;
 }
+
+@media (max-width: 500px) {
+    .nav-item {
+        width: 50vw;
+    }
+}

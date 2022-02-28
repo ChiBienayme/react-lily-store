@@ -5,6 +5,7 @@ import UpdatedList from "../components/UpdatedList";
 
 // CSS
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../css/Main.css"
 
 export default function Home() {
   const [items, setItems] = useState([
