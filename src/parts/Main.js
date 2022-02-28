@@ -17,6 +17,9 @@ export default function Home() {
   const [inputQuantity, setInputQuantity] = useState("");
   const [inputPrice, setInputPrice] = useState("");
 
+  // Total
+  // const [totalItemCount, setTotalItemCount] = useState(1);
+
 
   const handleAddButtonClick = () => {
     const newItem = {
@@ -30,6 +33,8 @@ export default function Home() {
         setInputName("");
         setInputQuantity("");
         setInputPrice("");
+        // calculateTotal();
+
       } else {
         console.log("Error");
       }
@@ -41,6 +46,11 @@ export default function Home() {
     const newItems = [...items];
     newItems[index].quantity++;
     setItems(newItems);
+      setInputName("");
+      setInputQuantity("");
+      setInputPrice("");
+      // calculateTotal();
+
 
   };
 
@@ -50,6 +60,11 @@ export default function Home() {
     if (newItems[index].quantity > 0) {
       newItems[index].quantity--;
       setItems(newItems);
+      setInputName("");
+      setInputQuantity("");
+      setInputPrice("");
+      // calculateTotal();
+
     }  else {
       newItems.quantity = 0;
     }
@@ -61,7 +76,22 @@ export default function Home() {
     const newItems = [...items];
     newItems.splice(index, 1);
     setItems(newItems);
+      setInputName("");
+      setInputQuantity("");
+      setInputPrice("");
+      // calculateTotal();
+    
   }
+
+  // Total function
+  // const calculateTotal = () => {
+	// 	const totalItemCount = items.reduce((total, item) => {
+	// 		return total + item.quantity;
+	// 	}, 0);
+
+	// 	setTotalItemCount(totalItemCount);
+	// };
+
 
   return (
     <>
@@ -114,7 +144,9 @@ export default function Home() {
                   </li> 
 
               </div>
+             
             )})}
+
           </div>
         </div>
       </div>
@@ -160,7 +192,15 @@ export default function Home() {
         >
           Create
         </button>
+        
       </div>
+      
+        {/* TOTAL */}
+        {/* <div>
+          <div className='badge badge-pill badge-primary'> TOTAL: {totalItemCount}</div>
+        </div> */}
+      
+
 
     </>
   );

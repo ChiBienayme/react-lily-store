@@ -25,7 +25,6 @@ export default function UpdatedList(props) {
           </li>
 
         </ul>
-      
     </>
   );
 }

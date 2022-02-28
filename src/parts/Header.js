@@ -21,8 +21,7 @@ export default function Header() {
             
           </div>
      
-        
-
+      
         <div className="col number-of-articles m-4">
           <h6 className=""> Number of articles </h6>
         </div>
