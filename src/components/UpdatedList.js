@@ -18,7 +18,7 @@ export default function UpdatedList(props) {
           </li>
 
           <li className="nav-item" id="quantity-1">
-            <div style={{ color: "red" }}> {props.quantity} </div>
+            {(props.quantity === 0 ? <div style={{"color":"red"}}>Out of Stock</div> : props.quantity)}
           </li>
           <li className="nav-item" id="price-1">
             {props.price} MAD 

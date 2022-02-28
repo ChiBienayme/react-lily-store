@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home() {
   const [items, setItems] = useState([
-    { itemName: "Milk", quantity: 1, price: 3.2, },
+    { itemName: "Milk", quantity: 1, price: 3.2},
   ]);
 
   // New List
@@ -24,10 +24,15 @@ export default function Home() {
       price: inputPrice,
     };
     const newItems = [...items, newItem];
-    setItems(newItems);
-    setInputName("");
-    setInputQuantity("");
-    setInputPrice("");
+      if(inputName !== "" && inputQuantity !== "" && inputPrice !=="") {
+        setItems(newItems);
+        setInputName("");
+        setInputQuantity("");
+        setInputPrice("");
+      } else {
+        console.log("Error");
+      }
+
   };
 
   // Increment button
@@ -40,9 +45,14 @@ export default function Home() {
 
   // Decrement button
   const handleQuantityDecrease = (index) => {
-    const newItems = [...items];  
-    newItems[index].quantity--;
-    setItems(newItems);
+    const newItems = [...items];
+    if (newItems[index].quantity > 0) {
+      newItems[index].quantity--;
+      setItems(newItems);
+    }  else {
+      newItems.quantity = 0;
+    }
+    
   };
 
   // Delete button
@@ -83,13 +93,14 @@ export default function Home() {
 
                 
                   <li className="nav-item">
-                    <button
+                     <button
                         className="btn btn-secondary btn-sm"
                         id="decrement-1"
                         onClick={() => handleQuantityDecrease(Math.max(index, 0))}
                       >
                         DECREMENT
                       </button>
+                    
                       
                     
                   </li>

@@ -8,11 +8,11 @@ export default function Footer () {
     return (
       <div>
           <code className='text-dark position-absolute top-100 start-50 translate-middle'>
-            Created by Ha Chi HOANG using React - 25/02/2022 
-            {/* <a href="https://github.com/ChiBienayme/react=lily-store" target="none">
-              Ha Chi HOANG
-            </a> */}
-
+            Created by  
+            <a href="https://github.com/ChiBienayme/react-lily-store.git" target="none">
+                 Ha Chi HOANG
+            </a>
+              by using React - 25/02/2022 
           </code>
       </div>
     )
